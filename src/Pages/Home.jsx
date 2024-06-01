@@ -66,13 +66,13 @@ export default function Home() {
             <Header/>
         </header>
         {/* banner */}
-        <section className='hidden 2xl:block'> 
+        <section> 
           <div className='max-w-[1320px] mx-auto relative z-[-1]'>
             <img src={banner} alt="" className='w-[100%] rounded' />
             <p className=' absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-[white] underline text-[50px] font-semibold '>
               {(user==='')?
               '':
-              <div className='text-center'>
+              <div className='text-center text-[25px] sm:text-[30px] md:text-[35px] lg:text-[40px] xl:text-[45px] 2xl:text-[50px]'>
                 Welcome
                 <div> {user} </div>
               </div>
@@ -81,21 +81,21 @@ export default function Home() {
           </div>
         </section>
         {/* Filter section */}
-        <section className='p-[10px] sm:p-[20px] md:p-[30px] w-[100%]'>
-          <div className='flex justify-center'>
-            <button className='text-center flex items-center gap-[5px] p-[3px_15px] border rounded-md bg-blue-300 hover:bg-blue-600 hover:text-white' onClick={()=>setFilterBtn(!filterBtn)}>
-                <CiFilter/> Filter 
+        <section className='max-w-[1320px] mx-auto p-[10px] sm:p-[20px] md:p-[30px] w-[100%]'>
+          <div className='flex justify-end'>
+            <button className='text-center flex items-center gap-[5px] p-[6px] md:p-[3px_15px] border border-slate-700 rounded-md bg-slate-700 text-[white] hover:bg-white hover:text-slate-700 ' onClick={()=>setFilterBtn(!filterBtn)}>
+                <CiFilter/> <sapan className='hidden md:block'> Filter </sapan>  
               </button>
           </div>
 
           <div className={(filterBtn)?'scale-1 transition duration-300':'scale-0 transition duration-300 h-[0]'}>
             <div className='max-w-[1320px] mx-auto'>
               <div className='flex justify-between  p-[5px]'>
-                <button className='border p-[3px_7px] rounded-lg hover:bg-blue-500 hover:text-white' onClick={()=>setCategoryName('')}>Clear All Filter</button>
-                <button className='border p-[3px_7px] rounded-lg hover:bg-blue-500 hover:text-white' onClick={()=>setCategoryButtonStatus(!CategoryButtonStatus)}> Category </button>
-                <button className='border p-[3px_7px] rounded-lg relative  hover:bg-blue-500 hover:text-white' onClick={()=>setSortBtnStatus(!sortBtnStatus)}> 
+                <button className='border border-slate-700 p-[3px_7px] rounded-lg hover:bg-slate-700 hover:text-white' onClick={()=>setCategoryName('')}>Clear All Filter</button>
+                <button className='border border-slate-700 p-[3px_7px] rounded-lg hover:bg-slate-700 hover:text-white' onClick={()=>setCategoryButtonStatus(!CategoryButtonStatus)}> Category </button>
+                <button className='border border-slate-700 p-[3px_7px] rounded-lg relative  hover:bg-slate-700 hover:text-white' onClick={()=>setSortBtnStatus(!sortBtnStatus)}> 
                   Sort By 
-                  <div className={(sortBtnStatus)?'absolute top-[105%] text-nowrap text-[black] left-0 p-[10px] bg-[white] border':'absolute w-[0px] h-[0px] overflow-hidden'}>
+                  <div className={(sortBtnStatus)?'absolute top-[108%] text-nowrap text-[black] right-0 p-[10px] bg-[white] rounded-md border border-slate-700':'absolute w-[0px] h-[0px] overflow-hidden'}>
                     <div onClick={sortA}>
                       Low to High
                     </div>
@@ -110,10 +110,9 @@ export default function Home() {
         </section>
         {/* Card Section */}
         <section>
-          <h1 className='text-center lg:text-[30px] md:text-[25px] text-[20px] underline p-[10px]'> Products </h1>
           <div className='w-[100%] px-[10px] sm:px-[20px] md:px-[30px]'>
             <div className='max-w-[1320px] mx-auto'>
-              <div className='grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 gap-2 items-center'>
+              <div className='grid xl:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-[5px] items-center'>
                 {
                   (product.length>0)?
                   product.map((v,i)=>{

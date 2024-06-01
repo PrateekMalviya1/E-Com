@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import logo from '../Images/logo.png'
 import { GoEye } from "react-icons/go";
 import { app } from '../FireBase/Fire';
+import { MdLogin } from "react-icons/md";
+import { MdLogout } from "react-icons/md";
 
 export default function Header() {
     let userMail=JSON.parse(localStorage.getItem('user'))??'';
@@ -82,10 +84,10 @@ export default function Header() {
                 <div>
                     <h1 className='text-[30px] font-serif text-center underline p-[10px] '> Sign In </h1>
                     <div className='text-[16px]'> Email </div>
-                    <input type="email" className='border w-[300px] py-[4px]' name="" value={signInEmail} onChange={(e)=>setSignInEmail(e.target.value)} />
+                    <input type="email" className='border border-slate-700 w-[300px] py-[4px]' name="" value={signInEmail} onChange={(e)=>setSignInEmail(e.target.value)} />
                     <div className='text-[16px]'> PassWord </div>
                     <div className='relative'>
-                        <input type={(pass)?'text':'password'} value={signInPass} onChange={(e)=>setSignInPass(e.target.value)} className='border w-[300px] py-[4px]' />
+                        <input type={(pass)?'text':'password'} value={signInPass} onChange={(e)=>setSignInPass(e.target.value)} className='border border-slate-700 w-[300px] py-[4px]' />
                         <div className='absolute right-2 top-[10px] cursor-pointer' onClick={()=>setPass(!pass)}>
                             <GoEye />
                         </div>
@@ -106,10 +108,10 @@ export default function Header() {
                 <div>
                     <h1 className='text-[30px] font-serif text-center underline p-[10px] '> Sign Up </h1>
                     <div className='text-[16px]'> Email </div>
-                    <input type="email" className='border w-[300px] py-[4px]' name="" value={signUpEmail} onChange={(e)=>setSignUpEmail(e.target.value)} />
+                    <input type="email" className='border border-slate-700 w-[300px] py-[4px]' name="" value={signUpEmail} onChange={(e)=>setSignUpEmail(e.target.value)} />
                     <div className='text-[16px]'> Set PassWord </div>
                     <div className='relative'>
-                        <input type={(pass)?'text':'password'} value={signUpPass} onChange={(e)=>setSignUpPass(e.target.value)} className='border w-[300px] py-[4px]' />
+                        <input type={(pass)?'text':'password'} value={signUpPass} onChange={(e)=>setSignUpPass(e.target.value)} className='border border-slate-700 w-[300px] py-[4px]' />
                         <div className='absolute right-2 top-[10px] cursor-pointer' onClick={()=>setPass(!pass)}>
                             <GoEye />
                         </div>
@@ -134,27 +136,27 @@ export default function Header() {
             <div className='flex justify-between items-center'>
                 <div>
                     <Link to={'/'}>
-                        <img src={logo} alt="Logo.." className='lg:w-[110px] lg:h-[110px] md:w-[70px] md:h-[70px] sm:w-[50px] sm:h-[50px] w-[40px] h-[40px] hover:scale-90'/>
+                        <img src={logo} alt="Logo.." className='lg:w-[110px] lg:h-[110px] md:w-[100px] md:h-[100px] sm:w-[75px] sm:h-[75px] w-[65px] h-[65px] hover:scale-90'/>
                     </Link>
                 </div>
                 <div className='xl:text-[30px] md:text-[23px] sm:text-[19px] '>
-                    <ul className='flex justify-between items-center lg:gap-[25px] sm:gap-[18px] gap-[10px]'>
+                    <ul className='flex justify-between items-center lg:gap-[40px] sm:gap-[30px] gap-[20px]'>
                         {
                             (userStatus==='')?
-                            <li className='underline hover:scale-95 hover:text-[#0000ff] cursor-pointer' onClick={()=>setForm(!form)} >
-                                Login
+                            <li className='flex justify-between items-center gap-1 md:gap-2 underline hover:scale-95 hover:text-slate-700 cursor-pointer' onClick={()=>setForm(!form)} >
+                                <MdLogin  className='text-[22px] xl:text-[30px] md:text-[23px] sm:text-[19px]'/> <span className='hidden sm:block'>Login </span>
                             </li>
                             :
-                            <li className='underline hover:scale-95 hover:text-[#0000ff] cursor-pointer' onClick={()=>deluser()} >
-                                Log Out
+                            <li className='flex justify-between items-center gap-1 md:gap-2 underline hover:scale-95 hover:text-slate-700 cursor-pointer' onClick={()=>deluser()} >
+                                <MdLogout className='text-[22px] xl:text-[30px] md:text-[23px] sm:text-[19px]' /><span className='hidden sm:block'> Log Out </span>
                             </li>
 
                         }
                         
                         <li>
-                            <Link to={'/cart'} className='flex underline items-center hover:scale-95 hover:text-[blue]'>
-                                <BsCart4 />
-                                Cart
+                            <Link to={'/cart'} className='flex underline gap-1 md:gap-2 items-center hover:scale-95 hover:text-slate-700'>
+                                <BsCart4  className='text-[22px] xl:text-[30px] md:text-[23px] sm:text-[19px]'/>
+                                <span className='hidden sm:block'> Cart </span>
                             </Link>
                         </li>
                     </ul>
