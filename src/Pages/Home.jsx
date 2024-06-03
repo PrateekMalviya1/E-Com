@@ -8,7 +8,7 @@ import Footer from '../Comman/Footer';
 import { cartContext } from '../Context/MainContext';
 
 export default function Home() {
-  let {userMailC,setUserMailC}=useContext(cartContext)
+  let {userMailC}=useContext(cartContext)
   let userName=JSON.parse(localStorage.getItem('user'))??''
   let [user,setUser]=useState(userName)
   let [product,setProduct]=useState([])
