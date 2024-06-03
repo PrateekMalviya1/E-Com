@@ -1,12 +1,14 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Card from '../Comman/Card'
 import { CiFilter } from "react-icons/ci";
 import Header from '../Comman/Header'
 import banner from '../Images/E-Com_Banner1.jpg'
 import Footer from '../Comman/Footer';
+import { cartContext } from '../Context/MainContext';
 
 export default function Home() {
+  let {userMailC,setUserMailC}=useContext(cartContext)
   let userName=JSON.parse(localStorage.getItem('user'))??''
   let [user,setUser]=useState(userName)
   let [product,setProduct]=useState([])
@@ -40,7 +42,7 @@ export default function Home() {
     ProductCall()
     CategoryCall();
     setUser(JSON.parse(localStorage.getItem('user')))
-  },[categoryName])
+  },[categoryName ,user,userMailC])
   return (
     <div>
       {/* Carosel of category */}

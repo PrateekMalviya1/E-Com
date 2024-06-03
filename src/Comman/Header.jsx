@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { BsCart4 } from "react-icons/bs";
 import { Link } from 'react-router-dom';
@@ -7,8 +7,10 @@ import { GoEye } from "react-icons/go";
 import { app } from '../FireBase/Fire';
 import { MdLogin } from "react-icons/md";
 import { MdLogout } from "react-icons/md";
+import { cartContext } from '../Context/MainContext';
 
 export default function Header() {
+    let {userMailC,setUserMailC}=useContext(cartContext)
     let userMail=JSON.parse(localStorage.getItem('user'))??'';
     let [userStatus,setUserStatus]=useState(userMail)
     let [pass,setPass]=useState(false)
@@ -23,6 +25,7 @@ export default function Header() {
     function deluser(){
         localStorage.setItem('user',JSON.stringify(''))
         setUserStatus('')
+        setUserMailC('')
     }
     function signUpFun(){
         const auth = getAuth(app);
@@ -56,6 +59,7 @@ export default function Header() {
         localStorage.setItem('user',JSON.stringify(user.email));
         setUserStatus(user.email)
         setSignInMsg('')
+        setUserMailC(user.email)
         // ...
         })
         .then(()=>{
